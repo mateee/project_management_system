@@ -1,0 +1,274 @@
+/*Flashes*/
+.alert, .notice {
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 20px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  border: 1px solid #fbeed5;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+  font-size: 17px;
+  line-height: 20px;
+}
+.notice {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+}
+.alert {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+}
+
+/*Ribbons h2*/
+h2
+{
+	position: relative;
+	width: 22%;
+	font-size: 1.5em;
+	font-weight: bold;
+	padding: 6px 20px 6px 61px;
+	margin: 10px 10px 10px -30px;
+	color: #555;
+	background-color: #D0D0D0;
+	text-shadow: 0px 1px 2px #bbb;
+	-webkit-box-shadow: 0px 2px 4px #888;
+	-moz-box-shadow: 0px 2px 4px #888;
+	box-shadow: 0px 2px 4px #888;
+}
+
+h2:before, h2:after
+{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+}
+
+h2:before
+{
+	width: 30px;
+	left: -30px;
+	top: 12px;
+	border-width: 20px 10px;
+	border-style: solid;
+	border-color: #999 #999 #999 transparent;
+}
+
+h2.simple:before
+{
+	display: none;
+}
+
+h2:after
+{
+	left: 0px;
+	top: 100%;
+	border-width: 5px 10px;
+	border-style: solid;
+	border-color: #828282 #828282 transparent transparent;
+}
+
+/*Ribbons h1*/
+h1
+{
+	position: relative;
+	width: 15%;
+	font-size: 1em;
+	font-weight: bold;
+	padding: 3px 20px 3px 61px;
+	margin: 10px 10px 10px -22px;
+	color: #555;
+	background-color: #EAEAEA;
+	text-shadow: 0px 1px 2px #bbb;
+	-webkit-box-shadow: 0px 2px 4px #888;
+	-moz-box-shadow: 0px 2px 4px #888;
+	-moz-border-right-colors: #0D0D0D;		
+	box-shadow: 0px 2px 4px #888;
+}
+
+h1:before, h1:after
+{
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+}
+
+h1:before
+{
+	width: 30px;
+	left: -30px;
+	top: 12px;
+	border-width: 20px 10px;
+	border-style: solid;
+	border-color: #999 #999 #999 transparent;
+}
+
+h1.simple:before
+{
+	display: none;
+}
+
+h1:after
+{
+	left: 0px;
+	top: 100%;
+	border-width: 3.5px 6px;
+	border-style: solid;
+	border-color: #828282 #828282 transparent transparent;
+}
+
+/*tabulka nice*/
+	.TFtable{
+		width:100%; 
+		/*font-size: 13; */
+		/*border-radius: 5px;*/
+		font-family: 'Arial';
+		border-collapse:collapse; 
+	}
+	.TFtable th{ 
+		padding:4px; border:#B6B6B6 1px solid;
+		background: #D3E6E9;
+	}
+	.TFtable td{ 
+		padding:4px; border:#EAEAEA 1px solid;	
+	}
+	/* provide some minimal visual accomodation for IE8 and below */
+	.TFtable tr{
+		background: #b8d1f3;
+	}
+	/*  Define the background color for all the ODD background rows  */
+	.TFtable tr:nth-child(odd){ 
+		background: #f1f4f9;
+	}
+	/*  Define the background color for all the EVEN background rows  */
+	.TFtable tr:nth-child(even){
+		background: #ffffff;
+	}
+
+/*Buttons*/
+.css3button {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #1e304a;
+	padding: 8px 22px;
+	background: -moz-linear-gradient(
+		top,
+		#7eb9e6 0%,
+		#a6e3f5);
+	background: -webkit-gradient(
+		linear, left top, left bottom,
+		from(#7eb9e6),
+		to(#a6e3f5));
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border: 2px solid #ffffff;
+	-moz-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 16px 0px rgba(95,157,199,0.4);
+	-webkit-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 16px 0px rgba(95,157,199,0.4);
+	box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 16px 0px rgba(95,157,199,0.4);
+	text-shadow:
+		0px -1px 2px rgba(66,103,214,0.5),
+		0px 1px 0px rgba(255,255,255,0.3);
+}
+
+.myButton {
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f9f9f9), color-stop(1, #d0d3d4));
+	background:-moz-linear-gradient(top, #f9f9f9 5%, #d0d3d4 100%);
+	background:-webkit-linear-gradient(top, #f9f9f9 5%, #d0d3d4 100%);
+	background:-o-linear-gradient(top, #f9f9f9 5%, #d0d3d4 100%);
+	background:-ms-linear-gradient(top, #f9f9f9 5%, #d0d3d4 100%);
+	background:linear-gradient(to bottom, #f9f9f9 5%, #d0d3d4 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9f9f9', endColorstr='#d0d3d4',GradientType=0);
+	background-color:#f9f9f9;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	border:1px solid #bfbbbf;
+	display:inline-block;
+	cursor:pointer;
+	color:#666666;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:1.5px 8px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.myButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #d0d3d4), color-stop(1, #f9f9f9));
+	background:-moz-linear-gradient(top, #d0d3d4 5%, #f9f9f9 100%);
+	background:-webkit-linear-gradient(top, #d0d3d4 5%, #f9f9f9 100%);
+	background:-o-linear-gradient(top, #d0d3d4 5%, #f9f9f9 100%);
+	background:-ms-linear-gradient(top, #d0d3d4 5%, #f9f9f9 100%);
+	background:linear-gradient(to bottom, #d0d3d4 5%, #f9f9f9 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d0d3d4', endColorstr='#f9f9f9',GradientType=0);
+	background-color:#d0d3d4;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+/*Fieldy, vsetky mozne*/
+  input[type=text], input[type=url], input[type=email], input[type=number], input[type=tel], input[type=password]{ 
+    border: 1px solid #c4c4c4; 
+    height: 25px; 
+    width: 275px; 
+    font-size: 13px; 
+    padding: 4px 4px 4px 4px; 
+    border-radius: 4px; 
+    -moz-border-radius: 4px; 
+    -webkit-border-radius: 4px; 
+    box-shadow: 0px 0px 8px #d9d9d9; 
+    -moz-box-shadow: 0px 0px 8px #d9d9d9; 
+    -webkit-box-shadow: 0px 0px 8px #d9d9d9; 
+} 
+	input[type=text]:focus{ 
+    outline: none; 
+    border: 1px solid #7bc1f7; 
+    box-shadow: 0px 0px 8px #7bc1f7; 
+    -moz-box-shadow: 0px 0px 8px #7bc1f7; 
+    -webkit-box-shadow: 0px 0px 8px #7bc1f7; 
+} 
+
+textarea, select { 
+    border: 1px solid #c4c4c4; 
+    /*height: 25px; */
+    width: 275px; 
+    font-size: 13px; 
+    padding: 4px 4px 4px 4px; 
+    border-radius: 4px; 
+    -moz-border-radius: 4px; 
+    -webkit-border-radius: 4px; 
+    box-shadow: 0px 0px 8px #d9d9d9; 
+    -moz-box-shadow: 0px 0px 8px #d9d9d9; 
+    -webkit-box-shadow: 0px 0px 8px #d9d9d9; 
+} 
+
+input[type=date], input[type=time]{
+	border: 1px solid #c4c4c4; 
+    /*height: 25px; 
+    width: 275px;*/ 
+    font-size: 13px; 
+    padding: 4px 4px 4px 4px; 
+    border-radius: 4px; 
+    -moz-border-radius: 4px; 
+    -webkit-border-radius: 4px; 
+    box-shadow: 0px 0px 8px #d9d9d9; 
+    -moz-box-shadow: 0px 0px 8px #d9d9d9; 
+    -webkit-box-shadow: 0px 0px 8px #d9d9d9; 
+}
+

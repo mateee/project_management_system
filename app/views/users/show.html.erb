@@ -1,0 +1,80 @@
+<% content_for :sub_navigation do %>
+	<%= render 'submenu'%>
+<%end%>
+
+<% content_for :content do %>
+	<h2 class="simple"><%= @user.full_name %></h2><br>
+	<% unless flash[:alert].nil? %>
+		<div class="alert"><%= flash[:alert] %></div>
+	<% end %>
+	<% unless flash[:notice].nil? %>
+		<div class="notice"><%= flash[:notice] %></div>
+	<% end %>
+
+<p>
+  <strong>First Name:</strong>
+  <%= @user.first_name %>
+</p>
+
+<p>
+  <strong>Last Name:</strong>
+  <%= @user.last_name %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @user.title %>
+</p>
+
+<p>
+  <strong>Acquirements:</strong>
+  <%= @user.acquirements %>
+</p>
+
+<p>
+  <strong>Photo:</strong>
+  <%= @user.photo %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @user.city %>
+</p>
+
+<hr>
+
+<p>
+  <b>Position:</b>
+  <%= @user.position %>
+</p>
+
+<p>
+  <b>Department:</b>
+  <%= @user.department%>
+</p>
+
+<p>
+  <b>Working Day:</b>
+  <%= @user.work_day %>
+</p>
+
+<p>
+  <strong>Access Level:</strong>
+  <%= @user.level %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= show_status(@user.status) %>
+</p>
+<br>
+
+<%= link_to 'Edit', edit_user_path(@user) %> <br>
+<%= link_to 'Back', users_path %>
+
+<%end%>

@@ -1,0 +1,6 @@
+<% content_for :content do %>
+	<h2 class="simple"><%= @project.name %></h2><br>
+	<%=render 'form'%>
+	
+	<%= link_to 'back', project_path(@project) %>
+<%end%>

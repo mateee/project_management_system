@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: MyText
+  start_at: 2014-07-24
+  end_at: 2014-07-24
+  state: MyText
+  user_id: 
+  project_id: 
+  task_id: 
+
+two:
+  type: MyText
+  start_at: 2014-07-24
+  end_at: 2014-07-24
+  state: MyText
+  user_id: 
+  project_id: 
+  task_id: 

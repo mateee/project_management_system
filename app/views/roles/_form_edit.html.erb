@@ -1,0 +1,56 @@
+<%= form_for(@role) do |role_form| %>
+
+  <% if @role.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@role.errors.count, "error") %> prohibited this role from being saved:</h2>
+
+      <ul>
+      <% @role.errors.full_messages.each do |message| %>
+      <label id="li_error"><%= message %></label> <br>
+      <% end %> <br>
+		
+    </div>
+  <% end %>
+  
+	<% unless flash[:alert].nil? %>
+		<div class="alert"><%= flash[:alert] %></div>
+	<% end %>
+	<% unless flash[:notice].nil? %>
+		<div class="notice"><%= flash[:notice] %></div>
+	<% end %>  
+  
+  <div class="field"> 
+  	<%= role_form.hidden_field :user_id %>  	
+  </div>
+   <div class="field">
+    <%= role_form.hidden_field :project_id %>	
+  </div> 
+  <div class="field">
+  	<%= role_form.hidden_field :task_id %>
+  </div>  
+  <div class="field">
+  	<%= role_form.hidden_field :special %>
+  </div> 
+  <div class="field">
+    <%= role_form.label :r_name %><br>
+    <%= role_form.text_area :r_name %>
+  </div>
+  <div class="field">
+    <%= role_form.label :state %><br>
+    <%= role_form.text_area :state %>
+  </div>
+  <div class="field">
+    <%= role_form.label :start_at %><br>
+    <%= role_form.date_field :start_at %>
+  </div>
+  <div class="field">
+    <%= role_form.label :end_at %><br>
+    <%= role_form.date_field :end_at %>
+  </div>
+  
+  <p>
+  <div class="actions">
+    <%= role_form.submit :onclick => "return confirm('Are you sure?')", :class=>"myButton"%>
+  </div> </p>
+  
+<% end %>

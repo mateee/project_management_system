@@ -1,0 +1,74 @@
+<%= form_for @role, :url => create_task_role_path do |role_form| %>
+
+  <% if @role.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@role.errors.count, "error") %> prohibited this role from being saved:</h2>
+
+      <ul>
+      <% @role.errors.full_messages.each do |message| %>
+      <label id="li_error"><%= message %></label> <br>
+      <% end %> <br>
+		
+    </div>
+  <% end %>
+  
+	<% unless flash[:alert].nil? %>
+		<div class="alert"><%= flash[:alert] %></div>
+	<% end %>
+	<% unless flash[:notice].nil? %>
+		<div class="notice"><%= flash[:notice] %></div>
+	<% end %>  
+  
+  <% @match = role_form.object %>
+  <% @tasks11 = Array.new %>
+  <% @projects11 = Array.new %>
+  
+  <div class="field">
+    <%= role_form.label :user%><label id="select_help"> Choose User for your role</label><br>  
+  	<%= role_form.collection_select  :user_id, @users, :id, :full_name, {:include_blank => false, :prompt => "Select User"},{ :id => :user_id } %>  	
+  </div>
+  
+    <div class="field">
+    <%= role_form.label :project%><label id="select_help"> Choose Project for your role</label><br>  
+    <%= role_form.collection_select  :project_id, @projects11, :id, :name, {:include_blank => false, :prompt => "Select Project"},{ :id => :project_id,
+  		"data-option-dependent"    => true,
+  		"data-option-observed"     => "user_id",
+  		"data-option-url"          => "/proj_depend/:user_id:/sub_user.json",
+ 		 "data-option-key-method"   => :id,
+ 		 "data-option-value-method" => :name,
+   	} %>	
+  </div> 
+  
+  <div class="field">
+    <%= role_form.label :task%><label id="select_help"> Choose Task for your role</label><br>  
+  	<%= role_form.collection_select  :task_id, @tasks11, :id, :task_name, {:include_blank => false, :prompt => "Select Task"},{ :id => :one_task_id,
+ 		"data-option-dependent"    => true,
+  		"data-option-observed"     => "project_id",
+  		"data-option-url"          => "/dofun/:project_id:/sub_user.json",
+  		"data-option-key-method"   => :id,
+ 		 "data-option-value-method" => :task_name
+  	 } %>
+  </div>  
+  <div class="field">
+    <%= role_form.label :r_name , :class => "r_name", :remote => true%><br>
+    <%= role_form.text_area :r_name %>
+  </div>
+  <div class="field">
+    <%= role_form.label :state %><br>
+    <%= role_form.text_area :state %>
+  </div>
+  <div class="field">
+    <%= role_form.label :start_at %><br>
+    <%= role_form.date_field :start_at %>
+  </div>
+  <div class="field">
+    <%= role_form.label :end_at %><br>
+    <%= role_form.date_field :end_at %>
+  </div>
+  
+  <p>
+  <div class="actions">
+    <%= role_form.submit :onclick => "return confirm('Are you sure?')", :class=>"myButton"%>
+  </div> </p>
+  
+<% end %>

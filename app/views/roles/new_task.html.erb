@@ -1,0 +1,9 @@
+<% content_for :sub_navigation do %>
+	<%= render 'submenu'%>
+<%end%>
+
+<% content_for :content do %>
+	<h2 class="simple">new assignment to task</h2><br>
+	<%= render 'form_task' %>
+	<%= link_to 'Back', roles_path %>
+<%end%>

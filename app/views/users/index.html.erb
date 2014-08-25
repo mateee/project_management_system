@@ -1,0 +1,57 @@
+<% content_for :sub_navigation do %>
+	<%= render 'submenu'%>
+<%end%>
+
+<% content_for :content do %>
+	<h2 class="simple"><%= controller.controller_name %></h2>
+
+	<% unless flash[:alert].nil? %>
+		<div class="alert"><%= flash[:alert] %></div>
+	<% end %>
+	<% unless flash[:notice].nil? %>
+		<div class="notice"><%= flash[:notice] %></div>
+	<% end %>
+
+<p><center>
+	<%= form_tag("users", method: "get") do%>
+	<%= label_tag(:stat, "Show only:") %><br>
+	<%= label_tag(:stat, "Active users") %>
+	<%= radio_button_tag(:stat, 1, @archive_value[0]) %>
+	<%= label_tag(:stat, "All users") %>
+	<%= radio_button_tag(:stat, 2, @archive_value[1]) %>
+	<%= submit_tag("Refresh", :class=>"myButton") %>
+<%end%>
+</center></p>
+
+<table align="center" class="TFtable" style="width: 100%;">
+  <thead>
+    <tr>
+      <th>Last Name</th>
+      <th>First Name</th>
+      <th>Title</th>
+      <th>Position</th>
+      <th>Department</th>
+      <th>E-mail</th>
+      <th>City</th>
+      <th colspan="7"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr id="row" class="<%= user.status %>">
+        <td><%= user.last_name %></td>
+        <td><%= user.first_name %></td>  
+        <td><%= user.title %></td>  
+        <td><%= user.position %></td>
+        <td><%= user.department %></td>
+        <td><%= user.email %></td>
+        <td><%= user.city %></td>
+        <td style="max-width: 29px;"><%= link_to 'Show', user_path(user) %></td>
+        <td style="max-width: 25px;"><%= link_to 'Edit', edit_user_path(user) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%end%>

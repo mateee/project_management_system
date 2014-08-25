@@ -1,0 +1,14 @@
+<% content_for :content do %>
+	<h2 class="simple">import</h2><br>
+
+	<% unless flash[:alert].nil? %>
+		<div class="alert"><%= flash[:alert] %></div>
+	<% end %>
+	<% unless flash[:notice].nil? %>
+		<div class="notice"><%= flash[:notice] %></div>
+	<% end %>
+
+<%= render "form_import" %>
+
+<%= link_to 'back', project_path(@project) %>
+<%end%>

@@ -1,0 +1,80 @@
+#login_wrapper {
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 400px;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+
+#login_box_wrap {
+    width: 400px;
+    float: left;
+    margin: 0 auto;
+}
+
+#login_box {
+    padding: 10px;
+    height: 300px;
+    background: #B6DFD6;
+    border-radius: 6px;
+    border: 1px solid #009966;
+    margin: 2px;
+}
+
+
+
+#wrapper {
+    margin: 0 auto;
+    width: 1000px;
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+
+#headerwrap {
+    width: 1000px;
+    float: left;
+    margin: 0 auto;
+}
+
+#header {
+    padding-left: 10px;
+    padding-top: 2px;
+    height: 50px;
+    background: #A9FFDA;
+    border: 1px solid #B6B6B6;
+    margin-bottom: 2px;
+}
+
+#navigationwrap {
+    width: 1000px;
+    float: left;
+    margin: 0 auto;
+}
+
+#navigation {
+    height: 62px;
+    background: #DDFFD9;
+    margin-top: 1px;
+    margin-bottom: 2px;
+    border: 1px solid #B6B6B6;
+}
+
+#sub_navigation {
+    height: 26px;
+    background: #FFFFFF;
+    margin-top: 3px;
+    margin-bottom: 1px;	
+    border: 1px solid #D0D0D0;
+}
+
+#contentwrap {
+    width: 1000px;
+    float: left;
+    margin: 0 auto;
+}
+
+#content {
+    padding: 10px;
+    min-height: 82%;
+    background: #FFFFFF;
+    margin-top: 1px;
+    border: 1px solid #D0D0D0;
+}

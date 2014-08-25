@@ -1,0 +1,69 @@
+<% content_for :content do %>
+	<h2 class="simple"><%= @customer.name %></h2><br>
+<p id="notice">
+	<% unless flash[:alert].nil? %>
+		<div class="alert"><%= flash[:alert] %></div>
+	<% end %>
+	<% unless flash[:notice].nil? %>
+		<div class="notice"><%= flash[:notice] %></div>
+	<% end %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @customer.name %>
+</p>
+
+<p>
+  <strong>Logo:</strong>
+  <%= @customer.logo %>
+</p>
+
+<p>
+  <strong>Adress:</strong>
+  <%= @customer.adress %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @customer.country %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @customer.city %>
+</p>
+
+<p>
+  <strong>Post code:</strong>
+  <%= @customer.post_code %>
+</p>
+
+<p>
+  <strong>Web:</strong>
+  <%= @customer.web %>
+</p>
+
+<p>
+  <strong>Mobile:</strong>
+  <%= @customer.mobile %>
+</p>
+
+<p>
+  <strong>Info:</strong>
+  <div style="word-wrap: break-word; width: 70%;">
+  	<%= @customer.info %>
+  </div>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= show_status(@customer.status) %>
+</p>
+<br>
+
+<%= link_to 'Edit', edit_customer_path(@customer) %> <br>
+<%= link_to 'Destroy', @customer, method: :delete, data: { confirm: 'Are you sure you want to DELETE this Customer?' } %><br>
+<%= link_to 'Back', customers_path %>
+
+<%end%>

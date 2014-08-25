@@ -1,0 +1,96 @@
+<%= form_for(@report, url: {action: "create"}) do |report_form| %>
+  <% if @report.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@report.errors.count, "error") %> prohibited this report from being saved:</h2>
+
+      <ul>
+      <% @report.errors.full_messages.each do |message| %>
+      <label id="li_error"><%= message %></label> <br>
+      <% end %> <br>
+		
+    </div>
+  <% end %>
+  
+  <div style="background-color: #B6FFEA; height: 109px; padding-top: 0px; border: 1px solid #D0D0D0;">
+  <table align="center">
+  <thead>
+    <tr>
+      <th>Project</th>
+      <th>Task</th>
+      <th>Date</th>
+      <th>Duration</th>
+      <th></th>
+      <th></th>
+      <th>
+      		<%= fields_for :object do |timer_form| %>
+  				<%= timer_form.text_field  :timer , {:id => "timer_start1", :onkeyup => 'startTime()', :size => 5, :style=>"width: auto;"}%>
+  			<% end %>
+      </th>
+      <th>
+      		<%= fields_for :object do |timer_form| %>
+  				<%= timer_form.text_field  :dur , {:id => "timer_dur", :onkeyup => 'endTime()', :size => 5, :style=>"width: auto;"}%>
+  			<% end %>
+      </th>
+      <th colspan="7"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>        
+        <td>        	
+        	<%= fields_for :project do |project_form| %>
+  				<%= project_form.collection_select  :project_id, @projects, :id, :name, {:include_blank => false, :prompt => "Select Project"},{ :id => :project_id, :style=>"width: 150px;" } %>
+  			<% end %>	 	
+        </td>
+        <td>
+        	<% @tasks = Array.new %>
+    		<%= report_form.collection_select  :task_id, @tasks, :id, :task_name, {:include_blank => false, :prompt => "Select Task"},{ :id => :task_id, :style=>"width: 180px;",
+  				"data-option-dependent"    => true,
+  				"data-option-observed"     => "project_id",
+  				"data-option-url"          => "/reports/:project_id:/sub_task.json",
+ 		 		"data-option-key-method"   => :id,
+ 		 		"data-option-value-method" => :task_name,} %>
+        </td>
+        <td>
+   			<%= report_form.date_field :date ,{:value => Time.now.strftime("%Y-%m-%d"), :style=>"width: 142px;"}%>
+        </td>
+        <td>
+    		<select name="hours_id" id="hours_id" style="width: auto;">
+  				<option value="02">00</option>
+  				<option value="03">01</option>
+  				<option value="04">02</option>
+  				<option value="05">03</option>
+  				<option value="06">04</option>
+  				<option value="07">05</option>
+  				<option value="08">06</option>
+  				<option value="09">07</option>
+  				<option value="10">08</option>
+  				<option value="11">09</option>
+  				<option value="12">10</option>
+  				<option value="13">11</option>
+  				<option value="14">12</option>
+			</select>
+			<select name="minutes_id" id="minutes_id" style="width: auto;">
+  				<option value="00">00</option>
+  				<option value="30">30</option>
+			</select>
+        </td>
+        <td>
+        	<%= report_form.submit :onclick => "return confirm('Are you sure?')", :class=>"myButton"%>
+        </td>
+        <td style="padding-left: 80px;"></td>
+        <td>
+        	<input type="button" onclick="startTime()" value="Start" class="myButton">
+        </td>
+        <td>
+        	<input type="button" onclick="endTime()" value="Stop"  class="myButton">
+        </td>
+      </tr>
+  </tbody>
+</table>
+	<div style="padding-left: 7px;">
+		<%= report_form.text_area :info , {:rows=>"1", :cols=>"42"}%>
+	</div>
+</div>
+  
+<% end %>

@@ -1,0 +1,134 @@
+<%= form_for @one_task, :url => update_all_one_task_path do |f|%>
+	<% @pom1 = 0 %>
+			<% if @err.any? %>
+				<div id="error_explanation">
+    			<h2>Errors prohibited this reports from being saved:</h2>
+    			<ul>
+    			<% @err.each do |message| %>
+    				<% if (message.split(" ").last) == "line" %>
+    					<label><%= message %></label> <br>
+    				<% else %>
+    					<label id="li_error"><%= message %></label> <br>
+    				<% end %>
+    			<% end %> <br>		
+    			</div>
+			<% end %>  
+  	  
+  	<% unless flash[:alert].nil? %>
+		<div class="alert"><%= flash[:alert] %></div>
+	<% end %>
+	<% unless flash[:notice].nil? %>
+		<div class="notice"><%= flash[:notice] %></div>
+	<% end %>
+
+  <% @one_tasks.each do |one_task| %> 
+  	<% @pom1 += 1 %> 
+    <%= fields_for "one_tasks[]", one_task do |tf| %>
+  
+  <%= @pom1 %>.line <br>
+  <div class="field">
+    <%= tf.label :guid , :id => "import_l"%>
+    <%= tf.hidden_field :guid, :id => "import_tf"%>
+
+    <%= tf.label :wbs_code , :id => "import_l"%>
+    <%= tf.text_field :wbs_code , :id => "import_tf", :size => 5%>
+    
+    <%= tf.label :task_name , :id => "import_l"%>
+    <%= tf.text_field :task_name, :id => "import_tf"%>
+   
+    <%= tf.label :supply_name , :id => "import_l"%>
+    <%= tf.text_field :supply_name, :id => "import_tf"%>
+    
+    <%= tf.label :work , :id => "import_l"%>
+    <%= tf.text_field :work, :id => "import_tf", :size => 6%>
+    
+    <%= tf.label :start_at , :id => "import_l"%>
+    <%= tf.date_field :start_at, :id => "import_tf", :size => 10%>
+    
+    <%= tf.label :end_at , :id => "import_l"%>
+    <%= tf.date_field :end_at, :id => "import_tf", :size => 10%>
+    
+    <%= tf.label :duration_day , :id => "import_l"%>
+    <%= tf.text_field :duration_day, :id => "import_tf", :size => 4%><br>
+    
+    <%= tf.label :milestone , :id => "import_l"%>                  
+    <%= tf.text_field :milestone, :id => "import_tf", :size => 5%>
+    
+    <%= tf.label :wbs_code_child , :id => "import_l"%>
+    <%= tf.text_field :wbs_code_child, :id => "import_tf", :size => 5%>
+    
+    <%= tf.label :wbs_code_parent, :id => "import_l"%>
+    <%= tf.text_field :wbs_code_parent, :id => "import_tf", :size => 5%>
+    
+    <%= tf.label :objects, :id => "import_l"%>
+    <%= tf.text_field :objects, :id => "import_tf", :size => 3%>
+    
+    <%= tf.label :parents, :id => "import_l"%>
+    <%= tf.text_field :parents, :id => "import_tf", :size => 3%>
+    
+    <%= tf.label :priority, :id => "import_l"%>
+    <%= tf.text_field :priority, :id => "import_tf", :size => 5%>
+    
+    <%= tf.label :joined_field, :id => "import_l"%>
+    <%= tf.text_field :joined_field, :id => "import_tf", :size => 5%>
+    
+    <%= tf.label :congestion, :id => "import_l"%>
+    <%= tf.text_field :congestion, :id => "import_tf", :size => 5%>
+    
+    <%= tf.label :work_plan, :id => "import_l"%>
+    <%= tf.text_field :work_plan, :id => "import_tf", :style=>"width: 80px;"%><br> 
+    
+    <%= tf.label :managed_by_effort , :id => "import_l"%>
+    <%= tf.text_field :managed_by_effort, :id => "import_tf", :size => 5%>
+    
+    <%= tf.label :hide_bar , :id => "import_l"%>
+    <%= tf.text_field :hide_bar, :id => "import_tf", :size => 5%>
+    
+    <%= tf.label :source_group , :id => "import_l"%>
+    <%= tf.text_field :source_group, :id => "import_tf"%>
+    
+    <%= tf.label :state , :id => "import_l"%>
+    <%= tf.text_field :state, :id => "import_tf", :size => 15%>
+    
+    <%= tf.label :sv , :id => "import_l"%>
+    <%= tf.text_field :sv, :id => "import_tf", :size => 5%>
+    
+    <%= tf.label :spi , :id => "import_l"%>
+    <%= tf.text_field :spi, :id => "import_tf", :size => 5%>
+    
+    <%= tf.label :equal_can_split_task , :id => "import_l"%>
+    <%= tf.text_field :equal_can_split_task, :id => "import_tf", :size => 5%>
+    
+    <%= tf.label :equal_assign , :id => "import_l"%>
+    <%= tf.text_field :equal_assign, :id => "import_tf", :size => 5%><br>
+    
+    <%= tf.label :accent_source , :id => "import_l"%>
+    <%= tf.text_field :accent_source, :id => "import_tf", :size => 12%>
+    
+    <%= tf.label :text1 , :id => "import_l"%>
+    <%= tf.text_field :text1, :id => "import_tf", :size => 12%>
+    
+    <%= tf.label :owner_assign , :id => "import_l"%>
+    <%= tf.text_field :owner_assign, :id => "import_tf", :size => 12%>
+    
+    <%= tf.label :source_type , :id => "import_l"%>
+    <%= tf.text_field :source_type, :id => "import_tf", :size => 12%>
+    
+    <%= tf.label :type_t , :id => "import_l"%>
+    <%= tf.text_field :type_t, :id => "import_tf", :size => 20%>
+    
+    <%= tf.label :assignment , :id => "import_l"%>
+    <%= tf.text_field :assignment, :id => "import_tf", :size => 5%>
+    
+    <%= tf.label :source_names , :id => "import_l"%>
+    <%= tf.text_field :source_names, :id => "import_tf", :size => 12%>
+  </div>
+  <hr>
+	<% end %> 
+  <% end %>
+  <p>
+  <div class="actions">
+    <%= f.submit :onclick => "return confirm('Are you sure?')", :class=>"myButton"%>
+  </div></p>
+	
+<% end %>

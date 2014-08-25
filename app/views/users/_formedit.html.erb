@@ -1,0 +1,88 @@
+<%= form_for(@user) do |user_form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+ 
+      <% @user.errors.full_messages.each do |message| %>
+      <label id="li_error"><%= message %></label> <br>
+      <% end %> <br>
+		
+    </div>
+  <% end %>
+  
+  	<% unless flash[:alert].nil? %>
+		<div class="alert"><%= flash[:alert] %></div>
+	<% end %>
+	<% unless flash[:notice].nil? %>
+		<div class="notice"><%= flash[:notice] %></div>
+	<% end %>
+
+  <div class="field">
+    <%= user_form.label :first_name %><br>
+    <%= user_form.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= user_form.label :last_name %><br>
+    <%= user_form.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= user_form.label :title %><br>
+    <%= user_form.text_field :title %>
+  </div>
+  <div class="field">
+    <%= user_form.label :acquirements %><br>
+    <%= user_form.text_field :acquirements %>
+  </div>
+  <div class="field">
+    <%= user_form.label :photo %><br>
+    <%= user_form.text_field :photo %>
+  </div>
+  <div class="field">
+    <%= user_form.label :email %><br>
+    <%= user_form.email_field :email %>
+  </div>
+  <div class="field">
+    <%= user_form.label :city %><br>
+    <%= user_form.text_field :city %>
+  </div>
+  
+  
+  <% if current_user.level == "VE" %>
+  <hr>
+  <div class="field">
+    <%= user_form.label :position %><br>
+    <%= user_form.text_field :position %>
+  </div>
+  <div class="field">
+    <%= user_form.label :department %><br>
+    <%= user_form.text_field :department %>
+  </div>
+  <div class="field">
+    <%= user_form.label :work_day %><br>
+    <%= user_form.text_field :work_day %>
+  </div>
+  <div class="field">
+  	<%= user_form.label :level %><br>
+  	<%= user_form.label :level, 'Employee' %>
+  	<%= user_form.radio_button :level, 'EM' %>
+  	<%= user_form.label :level, 'Project Manager' %>
+  	<%= user_form.radio_button :level, 'PM' %>
+  	<%= user_form.label :level, 'Verde' %>
+  	<%= user_form.radio_button :level, 'VE' %>
+  </div> <br>
+  <div class="field">
+  	<%= user_form.label :status %><br>
+  	<%= user_form.label :status, 'Active', :value => "true" %>
+  	<%= user_form.radio_button :status, true %>
+  	<%= user_form.label :status, 'Archive', :value => "false" %>
+  	<%= user_form.radio_button :status, false %>
+  </div> 
+  <%end%>
+
+  <br>
+  <div class="actions">
+    <%= user_form.submit :onclick => "return confirm('Are you sure?')", :class=>"myButton"%>
+  </div>
+  
+<% end %>

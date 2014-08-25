@@ -1,0 +1,27 @@
+<% content_for :sub_navigation do %>
+	<%= render 'submenu'%>
+<%end%>
+
+<% content_for :content do %>
+	<h2 class="simple">week</h2>
+	<h1 class="simple">update</h1><br>
+	<% unless flash[:alert].nil? %>
+		<div class="alert"><%= flash[:alert] %></div>
+	<% end %>
+	<% unless flash[:notice].nil? %>
+		<div class="notice"><%= flash[:notice] %></div>
+	<% end %>
+ 
+	<%= form_tag("week", method: "get") do%>
+	
+		<% @p = getWeeks() %>
+		<% getSelectedWeek() %>
+		<label>Choose Week</label> <%= select_tag :week, options_for_select(1..@p, @params_week), :style=>"width: auto;"%>
+
+  		<%= submit_tag("Refresh", :class=>"myButton") %>
+  	<% end %>
+  	
+  	<%= render "week_form" %>
+  	<hr> <h1 class="simple">create</h1><br>
+  	<%= render "newmany_form" %>
+<% end %>

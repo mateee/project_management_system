@@ -1,0 +1,42 @@
+<div id="wrapper">
+
+  <div id="headerwrap">
+    <div id="header">
+        <% if signed_in? %>
+            Signed in as: <%= current_user.email %><%= button_to 'Sign out', sign_out_path, method: :delete %>            
+        <% else %>
+            <%= link_to 'Sign in', sign_in_path %>
+        <% end %>
+
+        <div id="flash">
+            <% flash.each do |key, value| %>
+                <div class="flash <%= key %>"><%= value %></div>
+            <% end %>
+        </div>	
+    </div>
+  </div>
+
+  <div id="navigationwrap">
+    <div id="navigation">
+      <ul>
+  		<li id="li_menu"><a id="menu_Dashboard" href="/dashboard/index">Dashboard</a></li>
+  		<li id="li_menu"><a id="menu_Users" href=<%= users_path(@users) %>>Users</a></li>
+  		<li id="li_menu"><a id="menu_Timesheets"  href=<%= reports_path(@reports) %>>Timesheets</a></li>
+  		<li id="li_menu"><a id="menu_Roles" href=<%= my_roles_path(@roles) %>>Roles</a></li>
+  		<li id="li_menu"><a id="menu_Projects" href=<%= projects_path(@projects) %>>Projects</a></li>
+  		<li id="li_menu"><a id="menu_Customers" href=<%= customers_path(@customers) %>>Customers</a></li>
+  		<li id="li_menu"><a id="menu_Reports" href=<%= dashboard_reports_path %>>Reports</a></li>
+	  </ul> 
+    </div>
+    <%= yield :sub_navigation %>
+  </div>
+
+  <div id="contentwrap">
+    <div id="content">
+      <%= yield :content %>
+    </div>
+  </div>
+
+</div>
+
+<%= render template: "layouts/application" %>

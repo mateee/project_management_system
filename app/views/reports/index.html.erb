@@ -1,0 +1,61 @@
+<% content_for :sub_navigation do %>
+	<%= render 'submenu'%>
+<%end%>
+
+<% content_for :content do %>
+	<h2 class="simple">my timesheet</h2><br>
+	<% unless flash[:alert].nil? %>
+		<div class="alert"><%= flash[:alert] %></div>
+	<% end %>
+	<% unless flash[:notice].nil? %>
+		<div class="notice"><%= flash[:notice] %></div>
+	<% end %>
+
+	<%= render "form" %>
+	<%= render "table_myreport_form" %>
+	
+	<br>
+	<table align="center" class="TFtable">
+  		<thead>
+    		<tr>
+      			<th>Project</th>
+      			<th>Task</th>
+      			<th>Date</th>
+      			<th>Duration</th>
+      			<th colspan="5">Info</th>
+      			
+    		</tr>
+  		</thead>
+  		<tbody>
+      		<% @reports.each do |report| %>
+      		<tr id='report_tr' class="color<%= report.approvement %>">        
+        		<td style="width: 150px;">
+        			<%= report.project.name %>	
+        		</td>
+        		<td style="width: 200px;">
+        			<%= report.task.one_task.task_name %>
+        		</td>
+        		<td style="width: 87px;">
+        			<%= report.date %>
+        		</td>
+        		<td style="width: 68px;">
+					<%= report.time.strftime('%H:%M:%S') %>
+        		</td>
+        		<td> <%= report.info %> </td>
+        		<td style="width: 15px;"><% if report.approvement.nil? || report.approvement == 1 %>
+        			<%= link_to '&#10006;'.html_safe, report, :class => 'import_link_to' ,method: :delete, data: { confirm: 'Are you sure you want to DELETE this Report?'}%>
+        			<% end %></td>
+  		    	
+  		    </tr>
+  		    <% end %>
+  		    <tr style="padding:1px; font-size: 15; background-color: #C3C3C3;">
+  		    	<td style="padding:0px; border:#9C9C9C 1px solid;">Summary</td>
+  		    	<td style="padding:0px; border:#9C9C9C 1px solid;"></td>
+  		    	<td style="padding:0px; border:#9C9C9C 1px solid;"><%= @reports.size %> &nbsp days</td>
+  		    	<td style="padding:0px; border:#9C9C9C 1px solid;"><%= @sum %></td>
+  		    	<td style="padding:0px; border:#9C9C9C 1px solid;"></td>
+  		    	<td style="padding:0px; border:#9C9C9C 1px solid;"></td>
+  		    </tr>
+  		</tbody>
+  	</table>
+<% end %>

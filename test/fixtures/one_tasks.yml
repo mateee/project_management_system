@@ -1,0 +1,71 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  guid: 
+  wbs_code: 
+  task_name: MyString
+  supply_name: MyString
+  work: 1
+  start_at: 2014-08-01
+  end_at: 2014-08-01
+  duration_day: 1
+  milestone: false
+  wbs_code_child: 
+  wbs_code_parent: 
+  objects: 1
+  parents: 1
+  priority: 1
+  joined_field: false
+  congestion: false
+  work_plan: MyText
+  managed_by_effort: false
+  hide_bar: false
+  source_group: MyText
+  state: 
+  sv: 9.99
+  spi: 1.5
+  equal_can_split_task: false
+  equal_assign: false
+  accent_source: MyText
+  text1: MyText
+  owner_assign: 
+  source_type: 
+  type: 
+  assignment: false
+  source_names: MyText
+  task_id: 
+
+two:
+  guid: 
+  wbs_code: 
+  task_name: MyString
+  supply_name: MyString
+  work: 1
+  start_at: 2014-08-01
+  end_at: 2014-08-01
+  duration_day: 1
+  milestone: false
+  wbs_code_child: 
+  wbs_code_parent: 
+  objects: 1
+  parents: 1
+  priority: 1
+  joined_field: false
+  congestion: false
+  work_plan: MyText
+  managed_by_effort: false
+  hide_bar: false
+  source_group: MyText
+  state: 
+  sv: 9.99
+  spi: 1.5
+  equal_can_split_task: false
+  equal_assign: false
+  accent_source: MyText
+  text1: MyText
+  owner_assign: 
+  source_type: 
+  type: 
+  assignment: false
+  source_names: MyText
+  task_id: 

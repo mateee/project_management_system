@@ -1,0 +1,49 @@
+<%= form_tag("reports", method: "get") do%>
+
+<div style="background-color: #B6F6FF; height: 68px; padding-top: 5px; border: 1px solid #D0D0D0; border-bottom: 0px;">
+  	<div>
+  	<table align="left" style="border-spacing: 18px 0px; background-color: #B6F6FF;">
+  		<thead>
+    		<tr>
+    			<th></th>
+      			<th>Day</th>
+      			<th>Week</th>
+      			<th>Month &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Year</th>
+      			<th colspan="4">From &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp To</th>
+    		</tr>
+  		</thead>
+  		<tbody>
+      		<tr>
+      			<td style="width: 50px;" align="left"><%= submit_tag("Refresh", :class=>"myButton") %></td>
+        		<td>
+        			<%= radio_button_tag(:option, 1, @search_option[0]) %> 
+					<%= date_field_tag :day ,value = @search_day, :style=>"width: 142px;" %>	
+        		</td>
+        		<td>
+        			<% @p = getWeeks() %>
+					<%= radio_button_tag(:option, 2, @search_option[1]) %> 
+					<%= select_tag :week, options_for_select(1..@p, @search_week), :style=>"width: auto;"%> 
+        		</td>
+        		<td>
+        			<%= radio_button_tag(:option, 3, @search_option[2]) %> 
+  					<%= select_tag :month, options_for_select((1..12).map {|m| [Date::MONTHNAMES[m], m]}, @search_month), :style=>"width: auto;"%>
+  					<%= select_tag :year, options_for_select(2008..Date.today.year, @search_year), :style=>"width: 70px;" %> 
+        		</td>
+        		<td>
+        			<%= radio_button_tag(:option, 4, @search_option[3]) %> 
+					<%= date_field_tag :from, @search_from, :style=>"width: 142px;" %>	
+					<%= date_field_tag :to, @search_to, :style=>"width: 142px;"%>
+        		</td>
+  		    </tr>
+  		</tbody>
+  	</table>
+  	</div>
+  	
+  	
+</div>
+<div align="center" style="background-color: #EEFFFF; margin-top: 0px; padding-top: 0px; border: 1px solid #D0D0D0; border-top: 0px;">
+  		<label style="color: #EEDDFF; border: 1px solid #D0D0D0;">&#9608</label> <label style="font-size: 14">Approved by user (1. level)&nbsp&nbsp&nbsp</label>
+		<label style="color: #C9F9FF; border: 1px solid #D0D0D0;">&#9608</label> <label style="font-size: 14">Approved by p.manager/Verde (2. level)&nbsp&nbsp&nbsp</label>
+		<label style="color: #A9FFCE; border: 1px solid #D0D0D0;">&#9608</label> <label style="font-size: 14">Approved by Verde (3. level)</label>
+	</div>
+<%end%>

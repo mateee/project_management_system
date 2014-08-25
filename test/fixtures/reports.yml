@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2014-07-24
+  time: 2014-07-24 14:38:53
+  info: MyText
+  user_id: 
+  task_id: 
+
+two:
+  date: 2014-07-24
+  time: 2014-07-24 14:38:53
+  info: MyText
+  user_id: 
+  task_id: 

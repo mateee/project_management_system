@@ -1,0 +1,18 @@
+<% content_for :content do %>
+	<h2 class="simple">upload</h2><br>
+	<% unless flash[:alert].nil? %>
+		<div class="alert"><%= flash[:alert] %></div>
+	<% end %>
+	<% unless flash[:notice].nil? %>
+		<div class="notice"><%= flash[:notice] %></div>
+	<% end %>
+	
+	<%= form_tag("do_import", :multipart=>true, method: "post") do %>
+  		<%= label_tag :file, 'Upload your file' %> 
+  		<%= file_field_tag :file%>
+
+  		<%= submit_tag 'upload', :class=>"myButton"%>
+   <% end %>
+   
+	<%= link_to 'back', project_path(@project) %>
+<%end%>

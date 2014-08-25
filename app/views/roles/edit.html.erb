@@ -1,0 +1,9 @@
+<% content_for :sub_navigation do %>
+	<%= render 'submenu'%>
+<%end%>
+
+<% content_for :content do %>
+	<h2 class="simple">edit role <%= User.find(@role.user_id).full_name %></h2><br>
+	<%= render 'form_edit' %>
+	<%= link_to 'Back', role_path(@role.user_id) %>
+<%end%>

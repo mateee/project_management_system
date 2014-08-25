@@ -1,0 +1,91 @@
+<% content_for :content do %>
+	<h2 class="simple">reports</h2><p>
+	<% unless flash[:alert].nil? %>
+		<div class="alert"><%= flash[:alert] %></div>
+	<% end %>
+	<% unless flash[:notice].nil? %>
+		<div class="notice"><%= flash[:notice] %></div>
+	<% end %>
+
+	<%= render "table_approve_report_form" %>
+	<% @check = 0 %>
+	
+	<%if @approve_u == 1%>
+		<hr> <h1 class="simple"><%= User.find(@search_user).full_name %></h1><br>
+		<%= render "roles/role_user" %>
+		<p><hr></p>
+	<% end %>
+	
+<%= form_for @report, :url => approve_all_dashboard_path do |report_form|%>	
+	<br>
+	<table align="center" class="TFtable">
+  		<thead>
+    		<tr>
+    			<th>User</th>
+      			<th>Project</th>
+      			<th>Task</th>
+      			<th>Date</th>
+      			<th>Duration</th>
+      			<th>Info</th>
+      			<th colspan="7">Apvt</th>
+    		</tr>
+  		</thead>
+  		<tbody>
+  			
+      		<% @reports.each do |report| %>
+      		<tr id='report_tr' class="color<%= report.approvement %>">        
+        		<td style="width: 110px;">
+        			<%= report.user.full_name %>	
+        		</td>
+        		<td style="width: 100px;">
+        			<%= report.project.name %>	
+        		</td>
+        		<td style="width: 200px;">
+        			<%= report.task.one_task.task_name %>
+        		</td>
+        		<td style="width: 87px;">
+        			<%= report.date %>
+        		</td>
+        		<td style="width: 68px;">
+					<%= report.time.strftime('%H:%M:%S') %>
+        		</td>
+        		<td> <%= report.info %> </td> 
+        		<td> 
+        			<%= fields_for "reports[]", report do |r_form| %>
+        				<%if @approve_u == 1 && (report.approvement == 0 || report.approvement == 1)%>
+        					<% @check = 1 %>
+        					<% if current_user.level == "PM" %>
+        						<% if pmProjects().include?(report.project) %>
+        							<%= r_form.check_box :approvement, :checked => false %> 
+        						<% end %>
+        					<% else %>
+        						<%= r_form.check_box :approvement, :checked => false %>
+        					<% end %>
+        				<%end%>
+        			<% end %>
+        		</td> 
+  		    </tr>
+  		    <% end %>
+  		    <tr style="padding:1px; font-size: 15; background-color: #C3C3C3;">
+  		    	<td style="padding:0px; border:#9C9C9C 1px solid;">Summary</td>
+  		    	<td style="padding:0px; border:#9C9C9C 1px solid;"></td>
+  		    	<td style="padding:0px; border:#9C9C9C 1px solid;"></td>
+  		    	<td style="padding:0px; border:#9C9C9C 1px solid;"><%= @reports.size %> &nbsp days</td>
+  		    	<td style="padding:0px; border:#9C9C9C 1px solid;"><%= @sum %></td>
+  		    	<td style="padding:0px; border:#9C9C9C 1px solid;"></td>
+  		    	<td style="padding:0px; border:#9C9C9C 1px solid;"></td>
+  		    </tr>
+  		</tbody>		
+  	</table>
+  	<%if @approve_u == 1 && @check == 1%>
+  		<div align="right"><%= report_form.submit "Approve chosen tasks", :onclick => "return confirm('Are you sure?')"%></div>
+  	<%end%>
+<% end %>
+  	
+  	<p>
+  	<% if current_user.level == "VE" && @approve_u == 1 && @reports.any? %>
+  		<%= button_to 'Verde Approve Week', verde_approve_dashboard_path(getId_s()), :method => :post, :class=>"myButton" %>
+  	<% end %>
+  	
+<% end %>
+

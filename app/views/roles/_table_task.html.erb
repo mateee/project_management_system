@@ -1,0 +1,44 @@
+<% @tasks = @project.one_tasks.where("task_name IS NOT NULL").order(wbs_code: :asc) %>
+<% if @tasks.any? %>
+<table id="t_sub_special" align="right" style="width: 100%;">
+  				<thead>
+    				<tr id="t_subtask_menu">
+      					<th>Name</th>
+      					<th>Start</th>
+      					<th>End</th>
+      					<th>Milestone</th>
+      					<th>People</th>
+      					<th colspan="5"></th>
+    				</tr>
+  				</thead>
+
+  				<tbody>
+  				  
+  				  <% @tasks.each do |task| %>
+      				<tr id="t_subtask">        
+        				<td><%= task.task_name %></td>
+        				<td><%= task.start_at %></td>
+        				<td><%= task.end_at %></td>
+        				<td><%= task.milestone %></td>
+        				<td>
+        					<% @users = task.users %>
+        					<table style="width: 100%;">
+        						<tbody>
+        							<% @users.each do |user| %>
+        							<% @rl = Role.where(user_id: user.id, task_id: task.task.id).limit(1) %>
+        							<tr>
+        								<% @rl.each do |role| %>
+        								<td><%= link_to 'dlt', role, method: :delete, data: { confirm: 'Are you sure you want to Remove this User from this Task?' } %></td>
+        								<%end%>
+        								<td><%= user.last_name %></td>
+        							</tr>
+        							<% end %>
+        						</tbody>
+							</table>        					
+        				</td>
+        				<td><%= link_to 'Show', one_task_path(task) %></td>
+      				</tr>
+				  <% end %>
+  				</tbody>
+			</table>
+<% end %>

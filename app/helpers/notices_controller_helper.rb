@@ -1,0 +1,2 @@
+module NoticesControllerHelper
+end

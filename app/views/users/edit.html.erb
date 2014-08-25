@@ -1,0 +1,9 @@
+<% content_for :sub_navigation do %>
+	<%= render 'submenu'%>
+<%end%>
+
+<% content_for :content do %>
+	<h2 class="simple"><%= @user.full_name %></h2><br>
+	<%=render 'formedit'%>
+	<%= link_to 'Back', user_path(@user) %>
+<%end%>

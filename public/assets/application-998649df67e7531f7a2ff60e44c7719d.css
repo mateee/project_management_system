@@ -1,0 +1,87 @@
+#login_wrapper {
+    margin: 0 auto;
+    width: 300px;
+}
+
+#login_box_wrap {
+    width: 300px;
+    float: left;
+    margin: 0 auto;
+}
+
+#login_box {
+    padding: 10px;
+    height: 300px;
+    background: #A2FF9C;
+    border-radius: 6px;
+    border: 1px solid #8eeb88;
+    margin: 2px;
+}
+
+
+
+#wrapper {
+    margin: 0 auto;
+    width: 800px;
+}
+
+#headerwrap {
+    width: 800px;
+    float: left;
+    margin: 0 auto;
+}
+
+#header {
+    padding: 10px;
+    height: 80px;
+    background: #A2FF9C;
+    border-radius: 6px;
+    border: 1px solid #8eeb88;
+    margin: 2px;
+}
+
+#navigationwrap {
+    width: 800px;
+    float: left;
+    margin: 0 auto;
+
+}
+
+#navigation {
+    padding: 10px;
+    height: 15px;
+    background: #DDFFD9;
+    border-radius: 6px;
+    border: 1px solid #c9ebc5;
+    margin: 2px;
+}
+
+#contentwrap {
+    width: 800;
+    float: left;
+    margin: 0 auto;
+}
+
+#content {
+    padding: 10px;
+    background: #FFFFFF;
+    border-radius: 6px;
+    border: 1px solid #ebebeb;
+    margin: 2px;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+

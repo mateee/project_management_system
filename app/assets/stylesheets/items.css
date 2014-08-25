@@ -1,0 +1,116 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    float: left;
+}
+
+ul a {
+	color:#2E2F30; 
+	padding-right: 10px; 
+	padding-left: 10px; 
+	text-decoration:none;
+}
+
+a:hover, a:active {
+    background-color: #EFEFEF;
+}
+
+hr {
+	border: 0;
+	color:#EFEFEF;
+	background-color:#EFEFEF;
+	height: 2px;
+}
+
+#hr_strong {	
+	border: 0;
+	color:#BBBBBB;
+	background-color:#BBBBBB;
+	height: 2px;
+}
+
+#row.false {
+	background: #E9D0D0;
+}
+
+#select_help {
+	font-size: small;
+	color: #68A668;
+}
+
+#t_project.true {
+	background: #C3F9FF;
+	vertical-align:top;
+}
+#t_project.false {
+	background: #FFCECE;
+	vertical-align:top;
+}
+#t_project_menu {
+	background: #DADADA;
+}
+
+/*riadok tabulky reports*/
+#report_tr.color1 {
+	background: #EEDDFF;
+}
+#report_tr.color2 {
+	background: #C9F9FF;
+}
+#report_tr.color3 {
+	background: #A9FFCE;
+}
+
+/*tabulka farby v roles*/
+#t_subtask {
+	background: #FFC69C;
+}
+#t_subtask_menu {
+	background: #FF964E;
+}
+#t_subtask1 {
+	background: #B6DFBF;
+}
+#t_subtask_menu1 {
+	background: #5BBC79;
+}
+
+#t_special {
+		border-spacing: 0px 10px;"
+}	
+#t_sub_special {	
+}
+
+/*textfield v importe*/
+#import_tf {
+	font-size: 9px;
+	width: auto;
+}
+
+/*label v importe*/
+#import_l {
+	font-size: 9px;
+}
+
+/* link_to v project/show tabulka taskov*/
+.import_link_to {text-decoration: none;}
+.import_link_to:link{ color: #00497D; } 
+.import_link_to:visited{ color: #00497D; } 
+.import_link_to:hover{ color: #00497D; } 
+.import_link_to:active{ color: #00497D; }
+
+.icon {
+	text-decoration: none;
+	font-size: 20;
+}
+.icon:link{ color: #00497D; } 
+.icon:visited{ color: #00497D; } 
+.icon:hover{ color: #00497D; } 
+.icon:active{ color: #00497D; }
+
+
+

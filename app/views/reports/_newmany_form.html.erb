@@ -1,0 +1,83 @@
+<%= form_for @report1, :url => create_all_reports_path do |report_form|%>
+  	<% @pom1 = 0 %> 
+    	
+    		<% if @err.any? %>
+				<div id="error_explanation">
+    			<h2>Errors prohibited this reports from being saved:</h2>
+    			<ul>
+    			<% @err.each do |message| %>
+    				<% if (message.split(" ").last) == "line" %>
+    					<label><%= message %></label> <br>
+    				<% else %>
+    					<label id="li_error"><%= message %></label> <br>
+    				<% end %>
+    			<% end %> <br>		
+    			</div>
+			<% end %>  
+  	  
+  			<% unless flash[:alert].nil? %>
+				<div class="alert"><%= flash[:alert] %></div>
+			<% end %>
+			<% unless flash[:notice].nil? %>
+				<div class="notice"><%= flash[:notice] %></div>
+			<% end %>
+
+    <table align="center" style="width: 100%; border-spacing: 0px 0px;">
+  		<thead>
+    		<tr>
+    			<th></th>
+      			<th>Project</th>
+      			<th>Task</th>
+      			<th>Date</th>
+      			<th>Duration</th>
+      			<th>Info</th>
+  		      	<th colspan="6"></th>
+    		</tr>
+  		</thead>
+  		<tbody>
+      		
+      		
+      		<% @reports1.each do |report| %> 
+    			<%= fields_for "reports1[]", report do |r_form| %>
+      		
+      			<% @pom1 += 1 %> 
+      			<% @project_id = "project_idd"+@pom1.to_s %>
+      			<% @task_id = "task_idd"+@pom1.to_s %>
+      		<tr style="background: #E9E9E9;">
+      			<td><%= @pom1 %></td>        
+        		<td>
+        			<% selectedProject(report) %>
+        			<%= fields_for :project do |project_form| %>
+  					<%= project_form.collection_select  :project_id, @projects, :id, :name, {:include_blank => false, :prompt => @prompt},{ :id => @project_id, :style=>"width: 150px;" } %>
+  					<% end %>	
+        		</td>
+        		<td>
+        			<% selectedTask(report) %>
+        			<% @tasks = Array.new %>
+    				<%= r_form.collection_select  :task_id, @tasks, :id, :task_name, {:include_blank => @blank, :prompt => "Select Task", :selected => @selected},{ :id => @task_id, :style=>"width: 200px;",
+  						"data-option-dependent"    => true,
+  						"data-option-observed"     => @project_id,
+  						"data-option-url"          => "/reports/:"+ @project_id +":/sub_task.json",
+ 		 				"data-option-key-method"   => :id,
+ 		 				"data-option-value-method" => :task_name,} %>
+        		</td>
+        		<td>
+        			<%= r_form.date_field :date ,{:style=>"width: 142px;"}%>	
+        		</td>
+        		<td>
+        			<%= r_form.select :hours_id, options_for_select(0..12), {}, {:style=>"width: auto;"}%> 
+        			<%= r_form.select :minutes_id, options_for_select([0, 15, 30, 45]), {}, {:style=>"width: auto;"}%> 
+        		</td>
+        		<td>
+        			<%= r_form.text_area :info , {:rows=>"1", :cols=>"38"}%>
+        		</td>
+  		    </tr>
+	
+
+		<%end%>
+	<%end%>
+	  		</tbody>
+  	</table>
+	
+	<%= report_form.submit "Create Reports", :onclick => "return confirm('Are you sure?')", :class=>"myButton"%>
+<%end%>

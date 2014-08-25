@@ -1,0 +1,5 @@
+<% content_for :content do %>
+	<%=render 'form'%>
+	
+	<%= link_to 'back', session[:return_to_project_show] %>
+<%end%>

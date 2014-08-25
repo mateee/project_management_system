@@ -1,0 +1,52 @@
+<% content_for :content do %>
+	<h2 class="simple">projects</h2>
+
+	<% unless flash[:alert].nil? %>
+		<div class="alert"><%= flash[:alert] %></div>
+	<% end %>
+	<% unless flash[:notice].nil? %>
+		<div class="notice"><%= flash[:notice] %></div>
+	<% end %>
+
+<p><center>
+<%= form_tag("projects", method: "get") do%>
+  <%= label_tag(:stat, "Show only:") %><br>
+  <%= label_tag(:stat, "Active projects") %>
+  <%= radio_button_tag(:stat, 1, @archive_value[0]) %>
+  <%= label_tag(:stat, "All projects") %>
+  <%= radio_button_tag(:stat, 2, @archive_value[1]) %>
+  <%= submit_tag("Refresh", :class=>"myButton") %>
+<%end%>
+</center></p>
+
+<table align="center" class="TFtable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Customer</th>
+      <th>Start at</th>
+      <th>End at</th>
+      <th>Budget</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @project.each do |project| %>
+      <tr id="row" class="<%= project.status %>">        
+        <td><%= project.name %></td>
+        <td><%= project.customer.name %></td>
+        <td><%= project.start_at %></td>
+        <td><%= project.end_at %></td>
+        <td><%= project.budget %></td>
+        <td style="max-width: 14px;"><%= link_to 'Show', project_path(project) %></td>
+        <td style="max-width: 9px;"><%= link_to 'Edit', edit_project_path(project) %></td>
+        <td style="max-width: 18px;"><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure you want to DELETE this Project?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= button_to 'New Project', new_project_path, :class=>"myButton" %>
+
+<%end%>

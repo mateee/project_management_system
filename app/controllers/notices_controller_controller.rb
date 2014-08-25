@@ -1,0 +1,2 @@
+class NoticesControllerController < ApplicationController
+end

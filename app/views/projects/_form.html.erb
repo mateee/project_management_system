@@ -1,0 +1,51 @@
+<%= form_for(@project) do |project_form| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |message| %>
+      <label id="li_error"><%= message %></label> <br>
+      <% end %> <br>
+		
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= project_form.label :name %><br>
+    <%= project_form.text_field :name %>
+  </div>
+  
+  <div class="field">
+    <%= project_form.label :customer%><label id="select_help"> Choose customer for your project</label><br>  
+  	<%= project_form.select :customer_id, options_for_select(@customers.map{ |s| [s.name, s.id] })%>
+  </div>
+  <div class="field">
+    <%= project_form.label :start_at %><br>
+    <%= project_form.date_field :start_at %>
+  </div>
+  <div class="field">
+    <%= project_form.label :end_at %><br>
+    <%= project_form.date_field :end_at %>
+  </div>
+  <div class="field">
+    <%= project_form.label :budget %><br>
+    <%= project_form.text_field :budget %>
+  </div>
+  <div class="field">
+    <%= project_form.label :info %><br>
+    <%= project_form.text_area :info %>
+  </div>
+  <div class="field">
+  	<%= project_form.label :status %><br>
+  	<%= project_form.label :status, 'Active', :value => "true" %>
+  	<%= project_form.radio_button :status, true %>
+  	<%= project_form.label :status, 'Archive', :value => "false" %>
+  	<%= project_form.radio_button :status, false %>
+  </div> 
+  
+  <p>
+  <div class="actions">
+    <%= project_form.submit :onclick => "return confirm('Are you sure?')", :class=>"myButton"%>
+  </div> </p>
+<% end %>

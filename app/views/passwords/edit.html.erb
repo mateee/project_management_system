@@ -1,0 +1,22 @@
+<% content_for :log_content do %>
+
+<div id="clearance" class="password-reset">
+  <h1 class="simple"><%= t '.title' %></h1> 
+
+  <p><%= t '.description' %></p>
+
+  <%= form_for :password_reset,
+        :url => user_password_path(@user, :token => @user.confirmation_token),
+        :html => { :method => :put } do |form| %>
+    <div class="password-field">
+      <%= form.label :password %>
+      <%= form.password_field :password, :style=>"width: auto;"  %>
+    </div>
+
+    <div class="submit-field">
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>
+
+<%end%>

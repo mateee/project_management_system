@@ -1,0 +1,92 @@
+<%= form_for @report, :url => update_all_reports_path do |report_form|%>
+  	<% @pom = 0 %> 
+    	
+    		<% if @err1.any? %>
+				<div id="error_explanation">
+    			<h2>Errors prohibited this reports from being updated:</h2>
+    			<ul>
+    			<% @err1.each do |message| %>
+    				<% if (message.split(" ").last) == "line" %>
+    					<label><%= message %></label> <br>
+    				<% else %>
+    					<label id="li_error"><%= message %></label> <br>
+    				<% end %>
+    			<% end %> <br>		
+    			</div>
+			<% end %>  
+  	  
+  	<% unless flash[:alert].nil? %>
+		<div class="alert"><%= flash[:alert] %></div>
+	<% end %>
+	<% unless flash[:notice].nil? %>
+		<div class="notice"><%= flash[:notice] %></div>
+	<% end %>
+    	
+    <table align="center" style="width: 100%; border-spacing: 0px 3px;">
+  		<thead>
+    		<tr>
+    			<th></th>
+      			<th>Project</th>
+      			<th>Task</th>
+      			<th>Date</th>
+      			<th>Duration</th>
+      			<th>Info</th>
+  		      	<th colspan="6"></th>
+    		</tr>
+  		</thead>
+  		<tbody>
+      		<% @check = 0 %>	
+      		<% @reports.each do |report| %> 
+    			<%= fields_for "reports[]", report do |r_form| %>
+      		
+      			<% if (report.approvement.nil? || report.approvement == 1)%>
+      				<% @check = 1 %>
+      			<%end%>
+      			<% @project_id = "project_id"+report.id.to_s %>
+      			<% @pom += 1 %> 
+      			<% @task_id = "task_id"+@pom.to_s %>
+      		<tr id='report_tr' class="color<%= report.approvement %>" style="background: #FCD0D3;">       
+      			<td><%= @pom %></td> 
+        		<td>
+        			<%= fields_for :project do |project_form| %>
+  					<%= project_form.collection_select  :project_id, @projects, :id, :name, {:include_blank => false, :prompt => "Select Project", :selected => report.project.id},{ :id => @project_id, :style=>"width: 150px;" } %>
+  					<% end %>	
+        		</td>
+        		<td>
+        			
+        			<% @tasks = Array.new %>
+    				<%= r_form.collection_select  :task_id, @tasks, :id, :task_name, {:include_blank => report.task.one_task.task_name, :prompt => "Select Task", :selected => report.task.one_task.id},{ :id => @task_id, :style=>"width: 200px;",
+  						"data-option-dependent"    => true,
+  						"data-option-observed"     => @project_id,
+  						"data-option-url"          => "/reports/:"+ @project_id +":/sub_task.json",
+ 		 				"data-option-key-method"   => :id,
+ 		 				"data-option-value-method" => :task_name,} %>
+        		</td>
+        		<td>
+        			<%= r_form.date_field :date ,{:style=>"width: 142px;"}%>		
+        		</td>
+        		<td>
+        			<% selectedTime(report) %>
+        			<%= r_form.select :hours_id, options_for_select(0..12, @selected_time.hour), {}, {:style=>"width: auto;"} %> 
+        			<%= r_form.select :minutes_id, options_for_select(0..59, @selected_time.min), {}, {:style=>"width: auto;"}%> 
+        		</td>
+        		<td>
+        			<%= r_form.text_area :info , {:rows=>"1", :cols=>"40"}%>
+        		</td>
+        		<td>
+        			<%= r_form.text_field :helper, :value => report.task.one_task.id, :style=>"visibility: hidden; width: 0px;"%>
+        		</td>
+  		    </tr>
+	
+
+		<%end%>
+	<%end%>
+	  		</tbody>
+  	</table>
+	<% if @check == 1 %>
+		<%= report_form.submit "Update Reports", :onclick => "return confirm('Are you sure?')", :class=>"myButton"%>
+	<%end%>	
+<%end%>
+<% if @check == 1 %>
+	<%= button_to 'Approve Week', approve_reports_path(getId_s()), :method => :post, :class=>"myButton" %>
+<%end%>	

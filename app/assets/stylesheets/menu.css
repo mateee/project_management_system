@@ -1,0 +1,135 @@
+#menu_Dashboard {
+	display:block; 
+	padding-top: 42px;
+	background: #26C3EB;
+	background-image: url(uvod.png);
+	background-repeat: no-repeat;
+	background-position:center top;color: white	;
+}
+
+#menu_Dashboard:hover, #menu_Dashboard:active {
+	background: #FFFFFF;
+	background-image: url(menu/26C3EB_uvod2.png);
+	background-repeat: no-repeat;
+	background-position:center top;color: white	;
+	color: black;	
+}
+
+#menu_Users {
+	display:block; 
+	padding-top: 42px;
+	background: #F05553;
+	background-image: url(user.png);
+	background-repeat: no-repeat;
+	background-position:center top;color: white;		
+}
+#menu_Users:hover, #menu_Users:active {
+	background: #FFFFFF;
+	background-image: url(menu/F05553_user2.png);
+	background-repeat: no-repeat;
+	background-position:center top;color: white	;
+	color: black;	
+}
+
+#menu_Timesheets{
+	display:block; 
+	padding-top: 42px;
+	background: #88C53F;
+	background-image: url(timesheet.png);
+	background-repeat: no-repeat;
+	background-position:center top;color: white;
+}
+#menu_Timesheets:hover, #menu_Timesheets:active {
+	background: #FFFFFF;
+	background-image: url(menu/88C53F_timesheet2.png);
+	background-repeat: no-repeat;
+	background-position:center top;color: white	;
+	color: black;	
+}
+
+#menu_Roles {
+	display:block; 
+	padding-top: 42px;
+	background: #F4824E;
+	background-image: url(role.png);
+	background-repeat: no-repeat;
+	background-position:center top;color: white;
+}
+#menu_Roles:hover, #menu_Roles:active {
+	background: #FFFFFF;
+	background-image: url(menu/F4824E_role2.png);
+	background-repeat: no-repeat;
+	background-position:center top;color: white	;
+	color: black;	
+}
+
+#menu_Projects {
+	display:block; 
+	padding-top: 42px;
+	background: #34495E;
+	background-image: url(projekt.png);
+	background-repeat: no-repeat;
+	background-position:center top;color: white;	
+}
+#menu_Projects:hover, #menu_Projects:active {
+	background: #FFFFFF;
+	background-image: url(menu/34495E_projekt2.png);
+	background-repeat: no-repeat;
+	background-position:center top;color: white	;
+	color: black;	
+}
+
+#menu_Customers {
+	display:block; 
+	padding-top: 42px;
+	background: #8A5D3B;
+	background-image: url(customer.png);
+	background-repeat: no-repeat;
+	background-position:center top;color: white;	
+}
+#menu_Customers:hover, #menu_Customers:active {
+	background: #FFFFFF;
+	background-image: url(menu/8A5D3B_customer2.png);
+	background-repeat: no-repeat;
+	background-position:center top;color: white	;
+	color: black;	
+}
+
+#menu_Reports {
+	display:block; 
+	padding-top: 42px;
+	background: #37BDB8;
+	background-image: url(report.png);
+	background-repeat: no-repeat;
+	background-position:center top;color: white;		
+}
+#menu_Reports:hover, #menu_Reports:active {
+	background: #FFFFFF;
+	background-image: url(menu/37BDB8_report2.png);
+	background-repeat: no-repeat;
+	background-position:center top;color: white	;
+	color: black;	
+}
+
+#li_menu {
+	display:block; 	
+	line-height:20px; 	
+	width: 142.5px;
+	height:20px;
+	text-align: center;		 
+}
+
+#submenu_item {
+	display:block; 
+	line-height:26px; 
+	height: 26px
+}
+
+#li_submenu {
+	display:block; 
+	height:26px;
+}
+
+#li_error {
+	color: #F05553;
+}

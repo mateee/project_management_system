@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'reports' %>
+  <%= stylesheet_link_tag 'blocks' %>
+  <%= stylesheet_link_tag 'items' %>
+  <%= stylesheet_link_tag 'menu' %>
+  <%= stylesheet_link_tag 'basic_graphic' %> 
+  <%= csrf_meta_tag %>
+  
+  <%= include_gon %>
+  
+</head>
+<body style="background: #dadada; min-height: 95%">
+	
+	<script type="text/javascript">
+				var time, result;
+				
+				function startTime() {
+						time = new Date().getTime();
+						timer_dur.value = "";
+    					timer_start1.value = getTime1(1);
+    			}
+    					
+    			function endTime() {
+    					 var time2 = new Date().getTime();
+    					 var t3 = time2 - time;
+    					 timer_dur.value = getTime1(t3);
+						}
+						
+				function getTime1(n) {
+					if (n == 1) { var now = new Date(); }
+					else { var now = new Date(n); }
+    
+    				return ((now.getHours()-1)     + ':' +
+             			((now.getMinutes() < 10)
+                 		? ("0" + now.getMinutes())
+                 		: (now.getMinutes())) + ':' +
+             			((now.getSeconds() < 10)
+                 		? ("0" + now.getSeconds())
+                 		: (now.getSeconds())));
+					}
+				
+				function setSpecialRole() {
+					special_role_label.value = "User is set as a Project Manager";
+					special_role_field.value = "project_manager";
+				}
+	</script>
+
+  <%= yield %>
+  
+</body>
+</html>

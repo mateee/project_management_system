@@ -1,0 +1,183 @@
+<%= form_for(@one_task) do |one_task_form| %>
+  <% if @one_task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@one_task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% @one_task.errors.full_messages.each do |message| %>
+      <label id="li_error"><%= message %></label> <br>
+      <% end %> <br>		
+    </div>
+  <% end %>
+  
+  	<% unless flash[:alert].nil? %>
+		<div class="alert"><%= flash[:alert] %></div>
+	<% end %>
+	<% unless flash[:notice].nil? %>
+		<div class="notice"><%= flash[:notice] %></div>
+	<% end %>
+
+<div id="wrapper_task" style="overflow: auto;">
+
+<div id="left_task" style="float: left; width: 50%;">
+  
+  <div class="field">
+    <%= one_task_form.label :wbs_code%><br>
+    <%= one_task_form.text_field :wbs_code%>
+  </div>
+  <div class="field">
+    <%= one_task_form.label :task_name%><br>
+    <%= one_task_form.text_field :task_name%>
+  </div>
+    <div class="field">
+    <%= one_task_form.label :supply_name%><br>
+    <%= one_task_form.text_field :supply_name%>
+  </div>
+    <div class="field">
+    <%= one_task_form.label :work%><br>
+    <%= one_task_form.number_field :work%>
+  </div>
+    <div class="field">
+    <%= one_task_form.label :start_at%><br>
+    <%= one_task_form.date_field :start_at%>
+  </div>
+    <div class="field">
+    <%= one_task_form.label :end_at%><br>
+    <%= one_task_form.date_field :end_at%>
+  </div>
+    <div class="field">
+    <%= one_task_form.label :duration_day%><br>
+    <%= one_task_form.number_field :duration_day%>
+  </div>
+  <div class="field">
+  	<%= one_task_form.label :milestone %><br>
+  	<%= one_task_form.label :milestone, 'True', :value => "true" %>
+  	<%= one_task_form.radio_button :milestone, true %>
+  	<%= one_task_form.label :milestone, 'False', :value => "false" %>
+  	<%= one_task_form.radio_button :milestone, false %>
+  </div>      
+    <div class="field">
+    <%= one_task_form.label :wbs_code_child%><br>
+    <%= one_task_form.text_field :wbs_code_child%>
+  </div>
+      <div class="field">
+    <%= one_task_form.label :wbs_code_parent%><br>
+    <%= one_task_form.text_field :wbs_code_parent%>
+  </div>
+      <div class="field">
+    <%= one_task_form.label :objects%><br>
+    <%= one_task_form.number_field :objects%>
+  </div>
+      <div class="field">
+    <%= one_task_form.label :parents%><br>
+    <%= one_task_form.number_field :parents%>
+  </div>
+      <div class="field">
+    <%= one_task_form.label :priority%><br>
+    <%= one_task_form.number_field :priority%>
+  </div>
+  <div class="field">
+  	<%= one_task_form.label :joined_field %><br>
+  	<%= one_task_form.label :joined_field, 'True', :value => "true" %>
+  	<%= one_task_form.radio_button :joined_field, true %>
+  	<%= one_task_form.label :joined_field, 'False', :value => "false" %>
+  	<%= one_task_form.radio_button :joined_field, false %>
+  </div>
+  <div class="field">
+  	<%= one_task_form.label :congestion %><br>
+  	<%= one_task_form.label :congestion, 'True', :value => "true" %>
+  	<%= one_task_form.radio_button :congestion, true %>
+  	<%= one_task_form.label :congestion, 'False', :value => "false" %>
+  	<%= one_task_form.radio_button :congestion, false %>
+  </div>
+         <div class="field">
+    <%= one_task_form.label :work_plan%><br>
+    <%= one_task_form.text_area :work_plan%>
+  </div>
+</div>
+
+<div id="right_task" style="float: left; width: 50%;">	
+  <div class="field">
+  	<%= one_task_form.label :managed_by_effort %><br>
+  	<%= one_task_form.label :managed_by_effort, 'True', :value => "true" %>
+  	<%= one_task_form.radio_button :managed_by_effort, true %>
+  	<%= one_task_form.label :managed_by_effort, 'False', :value => "false" %>
+  	<%= one_task_form.radio_button :managed_by_effort, false %>
+  </div>
+  <div class="field">
+  	<%= one_task_form.label :hide_bar%><br>
+  	<%= one_task_form.label :hide_bar, 'True', :value => "true" %>
+  	<%= one_task_form.radio_button :hide_bar, true %>
+  	<%= one_task_form.label :hide_bar, 'False', :value => "false" %>
+  	<%= one_task_form.radio_button :hide_bar, false %>
+  </div>
+        <div class="field">
+    <%= one_task_form.label :source_group%><br>
+    <%= one_task_form.text_area :source_group%>
+  </div>
+        <div class="field">
+    <%= one_task_form.label :state%><br>
+    <%= one_task_form.text_field :state%>
+  </div>
+        <div class="field">
+    <%= one_task_form.label :sv%><br>
+    <%= one_task_form.text_field :sv%>
+  </div>
+        <div class="field">
+    <%= one_task_form.label :spi%><br>
+    <%= one_task_form.text_field :spi%>
+  </div>
+  <div class="field">
+  	<%= one_task_form.label :equal_can_split_task%><br>
+  	<%= one_task_form.label :equal_can_split_task, 'True', :value => "true" %>
+  	<%= one_task_form.radio_button :equal_can_split_task, true %>
+  	<%= one_task_form.label :equal_can_split_task, 'False', :value => "false" %>
+  	<%= one_task_form.radio_button :equal_can_split_task, false %>
+  </div>
+  <div class="field">
+  	<%= one_task_form.label :equal_assign%><br>
+  	<%= one_task_form.label :equal_assign, 'True', :value => "true" %>
+  	<%= one_task_form.radio_button :equal_assign, true %>
+  	<%= one_task_form.label :equal_assign, 'False', :value => "false" %>
+  	<%= one_task_form.radio_button :equal_assign, false %>
+  </div>
+        <div class="field">
+    <%= one_task_form.label :accent_source%><br>
+    <%= one_task_form.text_area :accent_source%>
+  </div>
+        <div class="field">
+    <%= one_task_form.label :text1%><br>
+    <%= one_task_form.text_area :text1%>
+  </div>
+          <div class="field">
+    <%= one_task_form.label :owner_assign%><br>
+    <%= one_task_form.text_field :owner_assign%>
+  </div>
+          <div class="field">
+    <%= one_task_form.label :source_type%><br>
+    <%= one_task_form.text_field :source_type%>
+  </div>
+          <div class="field">
+    <%= one_task_form.label :type_t%><br>
+    <%= one_task_form.text_field :type_t%>
+  </div>
+  <div class="field">
+  	<%= one_task_form.label :assignment%><br>
+  	<%= one_task_form.label :assignment, 'True', :value => "true" %>
+  	<%= one_task_form.radio_button :assignment, true %>
+  	<%= one_task_form.label :assignment, 'False', :value => "false" %>
+  	<%= one_task_form.radio_button :assignment, false %>
+  </div>
+          <div class="field">
+    <%= one_task_form.label :source_names%><br>
+    <%= one_task_form.text_area :source_names%>
+  </div>	
+	 
+</div>
+</div>
+  
+  <p>
+  <div class="actions">
+    <%= one_task_form.submit :onclick => "return confirm('Are you sure?')"%>
+  </div> </p>
+<% end %>

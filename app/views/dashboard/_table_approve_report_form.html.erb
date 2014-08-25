@@ -1,0 +1,93 @@
+<%= form_tag("reports", method: "get") do%>
+
+<div style="background-color: #B6F6FF; height: 120px; padding-top: 5px; padding-bottom: 5px; border: 1px solid #D0D0D0;">
+  <div id="wrapper_task" style="overflow: auto;">
+	
+	<div id="left_task" style="float: left; width: 20%; margin-top: 30px;" >	
+  	<table>
+  		<thead>
+    		<tr>
+      			<th></th>
+      			<th></th>
+  		      	<th colspan="2"></th>
+    		</tr>
+  		</thead>
+  		<tbody>
+      		<tr>        
+        		<td>Project: </td>
+        		<td><%= select_tag :project_id, options_for_select(@projects.map{ |p| [p.name, p.id] }, @search_project), {:prompt=> "All Projects", :style=>"width: auto;"}%></td>
+  		    </tr>
+      		<tr>        
+        		<td>User:</td>
+        		<td><%= select_tag :user_id, options_for_select(@users.map{ |u| [u.full_name, u.id] }, @search_user), {:prompt=> "All Users", :style=>"width: auto;"} %></td>
+  		    </tr>
+  		</tbody>
+  	</table>
+  </div>
+	
+	<div id="right_task" style="float: left; width: 70%;">  	
+  	<table align="left" style="border-spacing: 20px 0px;">
+  		<thead>
+    		<tr>
+      			<th>Day</th>
+      			<th>Week</th>
+      			<th>Month</th>
+      			<th>Year</th>
+  		      	<th colspan="4"></th>
+    		</tr>
+  		</thead>
+  		<tbody>
+      		<tr>        
+        		<td>
+        			<%= radio_button_tag(:option, 1, @search_option[0]) %> 
+					<%= date_field_tag :day ,value = @search_day%>	
+        		</td>
+        		<td>
+        			<% @p = getWeeks() %>
+					<%= radio_button_tag(:option, 2, @search_option[1]) %> 
+					<%= select_tag :week, options_for_select(1..@p, @search_week), :style=>"width: auto;"%> 
+        		</td>
+        		<td>
+        			<%= radio_button_tag(:option, 3, @search_option[2]) %> 
+  					<%= select_tag :month, options_for_select((1..12).map {|m| [Date::MONTHNAMES[m], m]}, @search_month), :style=>"width: auto;"%>
+        		</td>
+        		<td>
+					<%= select_tag :year, options_for_select(2008..Date.today.year, @search_year), :style=>"width: auto;"%> 
+        		</td>
+  		    </tr>
+  		</tbody>
+  	</table>
+  	
+  	<table align="left" style="margin-left: 18px;">
+  		<thead>
+    		<tr>
+      			<th>From</th>
+      			<th>To</th>
+  		      	<th colspan="2"></th>
+    		</tr>
+  		</thead>
+  		<tbody>
+      		<tr>        
+        		<td>
+        			<%= radio_button_tag(:option, 4, @search_option[3]) %> 
+					<%= date_field_tag :from, @search_from%>	
+        		</td>
+        		<td>
+        			<%= date_field_tag :to, @search_to%>
+        		</td>
+  		    </tr>
+  		</tbody>
+  	</table>
+  
+  </div>
+  
+  	<div id="right_task" style="float: left; width: 10%; margin-top: 40px;">  	
+  		<div align="center" style="padding-top: 5px;">
+  			<%= submit_tag("Refresh", :class=>"myButton") %>
+  		</div>
+  	</div>
+</div>
+	
+	
+</div>
+<%end%>

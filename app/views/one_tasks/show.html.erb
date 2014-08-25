@@ -1,0 +1,159 @@
+<% content_for :content do %>
+<p id="notice"><%= notice %></p>
+
+<div id="wrapper_task" style="overflow: auto;">
+
+<div id="left_task" style="float: left; width: 50%;">
+<p>
+  <strong>Guid:</strong>
+  <%= @one_task.guid %>
+</p>
+<p>
+  <strong>Wbs code:</strong>
+  <%= @one_task.wbs_code %>
+</p>
+<p>
+  <strong>Task name:</strong>
+  <%= @one_task.task_name %>
+</p>
+<p>
+  <strong>Supply name:</strong>
+  <%= @one_task.supply_name %>
+</p>
+<p>
+  <strong>Work:</strong>
+  <%= @one_task.work %>
+</p>
+<p>
+  <strong>Start at:</strong>
+  <%= @one_task.start_at %>
+</p>
+<p>
+  <strong>Duration day:</strong>
+  <%= @one_task.duration_day %>
+</p>
+<p>
+  <strong>Milestone:</strong>
+  <%= @one_task.milestone %>
+</p>
+<p>
+  <strong>Wbs code child:</strong>
+  <%= @one_task.wbs_code_child %>
+</p>
+<p>
+  <strong>Wbs code parent:</strong>
+  <%= @one_task.wbs_code_parent %>
+</p>
+<p>
+  <strong>Objects:</strong>
+  <%= @one_task.objects %>
+</p>
+<p>
+  <strong>Parents:</strong>
+  <%= @one_task.parents %>
+</p>
+<p>
+  <strong>Priority:</strong>
+  <%= @one_task.priority %>
+</p>
+<p>
+  <strong>Joined field:</strong>
+  <%= @one_task.joined_field %>
+</p>
+<p>
+  <strong>Congestion:</strong>
+  <%= @one_task.congestion %>
+</p>
+<p>
+  <strong>Work plan:</strong>
+  <div style="word-wrap: break-word; width: 90%;">
+  	<%= @one_task.work_plan %>
+  </div>
+</p>
+<p>
+  <strong>Managed by effort:</strong>
+  <%= @one_task.managed_by_effort %>
+</p>
+</div>
+
+<div id="right_task" style="float: left; width: 50%;">
+<p>
+  <strong>Hide bar:</strong>
+  <%= @one_task.hide_bar %>
+</p>
+<p>
+  <strong>Source group:</strong>
+  <div style="word-wrap: break-word; width: 90%;">
+  	<%= @one_task.source_group %>
+  </div>
+</p>
+<p>
+  <strong>State:</strong>
+  <%= @one_task.state %>
+</p>
+<p>
+  <strong>SV:</strong>
+  <%= @one_task.sv %>
+</p>
+<p>
+  <strong>SPI:</strong>
+  <%= @one_task.spi %>
+</p>
+<p>
+  <strong>Equal can split task:</strong>
+  <%= @one_task.equal_can_split_task %>
+</p>
+<p>
+  <strong>Equal assign:</strong>
+  <%= @one_task.equal_assign %>
+</p>
+<p>
+  <strong>Accent source:</strong>
+  <div style="word-wrap: break-word; width: 90%;">
+  	<%= @one_task.accent_source %>
+  </div>
+</p>
+<p>
+  <strong>Text1:</strong>
+  <div style="word-wrap: break-word; width: 90%;">
+  	<%= @one_task.text1 %>
+  </div>
+</p>
+<p>
+  <strong>Owner assignment:</strong>
+  <%= @one_task.owner_assign %>
+</p>
+<p>
+  <strong>Source type:</strong>
+  <%= @one_task.source_type %>
+</p>
+<p>
+  <strong>Type of task:</strong>
+  <%= @one_task.type_t %>
+</p>
+<p>
+  <strong>Assignment:</strong>
+  <%= @one_task.assignment %>
+</p>
+<p>
+  <strong>Source names:</strong>
+  <div style="word-wrap: break-word; width: 90%;">
+  	<%= @one_task.source_names %>
+  </div>
+</p>
+<p>
+  <strong>Created at:</strong>
+  <%= @one_task.created_at %>
+</p>
+<p>
+  <strong>Updated at:</strong>
+  <%= @one_task.updated_at %>
+</p>
+</div>
+</div>
+
+<%= link_to 'Edit', edit_one_task_path(@one_task) %> <br>
+<%= link_to 'Destroy', @one_task, method: :delete, data: { confirm: 'Are you sure you want to DELETE this Task?' } %><br>
+<%= link_to 'Back', session[:return_to_project_show] %>
+
+<%end%>
